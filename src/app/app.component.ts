@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
     });
   }
   onAddPerson (person) {
-    console.log('person', person);
     this.personList.push(person);
     this.personList = this.personList.slice();
   }

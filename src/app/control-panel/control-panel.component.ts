@@ -39,14 +39,12 @@ export class ControlPanelComponent {
   @Input()
   set selectPerson(selectedPerson: Person) {
     this._selectedPerson = selectedPerson;
-    console.log('selectedPerson', selectedPerson);
   }
   @Output()
   public addPerson: EventEmitter<Person> = new EventEmitter();
 
   onsubmit (event) {
     event.preventDefault();
-    console.log('this.person', this.person);
 
     let lastKey;
     if (this._personList.length) {
