@@ -1,0 +1,123 @@
+/*Now the CSS*/
+* {margin: 0; padding: 0;}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.tree ul {
+	padding-top: 20px; position: relative;
+	padding-right: 0;
+	padding-left: 0;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+.tree li {
+	float: left;
+	text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 5px 0 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*We will use :before and :after to draw the connectors*/
+
+.inner-item:before,
+.inner-item:after{
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 1px solid #ccc;
+	width: 50%; height: 20px;
+}
+.inner-item:after{
+	right: auto; left: 50%;
+	border-left: 1px solid #ccc;
+}
+
+/*connectors style*/
+
+.connector-left:before {
+    border-top: 0;
+    
+}
+.connector-left:after {
+    border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+.connector-right:after {
+    border: 0;
+}
+.connector-right::before {
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+
+.tree .none-connector {
+    padding-top: 0;
+}
+.none-connector:before,
+.none-connector:after {
+    display: none;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul:before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 1px solid #ccc;
+	width: 0; height: 20px;
+}
+
+.tree li a{
+	border: 1px solid #ccc;
+	padding: 10px 10px;
+	text-decoration: none;
+	color: #666;
+	font-family: arial, verdana, tahoma;
+	font-size: 11px;
+	display: inline-block;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover, .tree li a:hover+ul li a {
+	background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+}
+/*Connector styles on hover*/
+.tree li a:hover+ul li:after, 
+.tree li a:hover+ul li:before, 
+.tree li a:hover+ul:before, 
+.tree li a:hover+ul ul:before{
+	border-color:  #94a0b4;
+}
+
+.person-link {
+	position: relative;
+}
+.delete-btn {
+	position: absolute;
+	top: -3px;
+    right: 2px;
+	display: none;
+	color: red;
+}
+.person-link:hover .delete-btn {
+	display: block;
+}

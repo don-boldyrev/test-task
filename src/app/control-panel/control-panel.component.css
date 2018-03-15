@@ -1,0 +1,23 @@
+.control-panel {
+    border-right: 1px solid #9e9595;
+    width: 150px;
+    position: fixed;
+    left: 0;
+}
+.added-form {
+    width: 100%;
+  }
+  
+.added-full-width {
+    width: 100%;
+}
+
+.added-btn {
+    background-color: #455488;
+    color: #fff;
+}
+
+.get-json-btn {
+    background-color: #438a66;
+    color: #fff;
+}

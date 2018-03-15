@@ -1,0 +1,26 @@
+<div class ="control-panel">
+  <form class="added-form" (submit)="onsubmit($event)">
+    <div *ngIf="_selectedPerson">Add new child to {{_selectedPerson.name}}</div>
+    <div *ngIf="!_selectedPerson">Add root person</div>
+    <mat-form-field class="added-full-width">
+      <input matInput placeholder="Name" [(ngModel)]="person.name" name = "name" required>
+    </mat-form-field>
+    <mat-form-field class="added-full-width">
+      <input matInput placeholder="Gender" [(ngModel)]="person.gender" name = "gender">
+    </mat-form-field>
+    <mat-form-field class="added-full-width">
+      <input matInput placeholder="BirthYear" [(ngModel)]="person.birthYear" name = "birthYear" required>
+    </mat-form-field>
+    <mat-form-field class="added-full-width">
+      <input matInput placeholder="DeathYear" [(ngModel)]="person.deathYear" name = "deathYear">
+    </mat-form-field>
+    <!--<mat-form-field class="added-full-width">
+      <input matInput placeholder="Parent" [(ngModel)]="person.parent" name = "parent" required>
+    </mat-form-field>-->
+    <mat-form-field class="added-full-width">
+      <input matInput placeholder="Reign" [(ngModel)]="person.reign" name = "reign">
+    </mat-form-field>
+    <button mat-button class="added-btn" type="submit">Add new person</button>
+  </form>
+  <button mat-button class="get-json-btn">Get json</button>
+</div>

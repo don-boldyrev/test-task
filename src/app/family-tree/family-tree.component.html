@@ -1,0 +1,49 @@
+
+  <ng-container *ngIf="_personList && _personList.length">
+    <div class="tree clearfix" *ngIf="key === undefined; else childItem">
+      <ul>
+          <li #rootHtml>
+            <a class="person-link" href="#" (click)="onSelectPerson(currentPerson)" [title]="currentPerson.birthYear">
+              {{currentPerson.name}}
+              <span class="delete-btn">x</span>
+            </a>
+            <ul *ngIf="childPersonArr.length !== 0">
+                <app-family-tree 
+                (selectPerson) = onSelectPerson($event)
+                (deletePerson) = onDeletePerson($event)
+                [personList] = "_personList"
+                *ngFor="let person of childPersonArr; first as first; last as last"
+                [key]="person.key"
+                [first] = "first"
+                [last] = "last"
+                [oneChild] = "childPersonArr.length === 1"
+                >
+                </app-family-tree>
+              </ul>
+          </li>
+      </ul>
+    </div>
+    <ng-template #childItem>
+        <li 
+        class="inner-item" 
+        [ngClass]="{'connector-left': first, 'connector-right': last, 'none-connector': oneChild}">
+          <a class="person-link" href="#" (click)="onSelectPerson(currentPerson)" [title]="currentPerson.birthYear">
+            {{currentPerson.name}}
+              <span class="delete-btn" (click)="onDeletePerson(currentPerson)">x</span>
+          </a>
+          <ul *ngIf="childPersonArr.length !== 0">
+            <app-family-tree
+            (selectPerson) = onSelectPerson($event)
+            (deletePerson) = onDeletePerson($event)
+            [personList] = "_personList"
+            *ngFor="let person of childPersonArr; first as first; last as last"
+            [key]="person.key"
+            [first] = "first"
+            [last] = "last"
+            [oneChild] = "childPersonArr.length === 1"
+            >
+            </app-family-tree>
+          </ul>
+        </li>
+    </ng-template>
+  </ng-container>
